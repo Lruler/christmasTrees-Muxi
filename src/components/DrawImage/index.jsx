@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer } from "react-konva";
 import useImage from "use-image";
 import avatar from "../../static/avatar.png";
-import comment from "../../static/comment.svg";
 import "./index.css";
 
 const downloadURI = (uri, name) => {
@@ -103,8 +102,6 @@ const DrawImage = () => {
           </Layer>
         </Stage>
       </div>
-      <button onClick={handleExport}>点我下载</button>
-      <button onClick={handleAdd}>点我添加</button>
     </>
   );
 };

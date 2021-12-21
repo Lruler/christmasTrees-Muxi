@@ -1,0 +1,19 @@
+.imagetab {
+    touch-action: none;
+    height: 30vh;
+    width: 100vw;
+}
+
+.image-tips {
+    height: 20vh;
+    width: 100vw;
+    background-color: gold;
+}
+
+.image-choice {
+    display: flex;
+    overflow: scroll;
+    height: 10vh;
+    width: 100vw;
+    background-color: gainsboro;
+}
