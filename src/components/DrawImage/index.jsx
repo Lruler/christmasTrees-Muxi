@@ -2,30 +2,24 @@ import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer } from "react-konva";
 import { useNavigate } from "react-router";
 import useImage from "use-image";
-import avatar from "../../static/avatar.png";
 import "./index.css";
 
 const ImageComponents = (props) => {
-  const { imgUrl } = props;
+  const { imgUrl, isSelected, onSelect } = props;
   const imgRef = useRef();
   const trRef = useRef();
   const [image] = useImage(imgUrl);
-  const [isTrans, setIsTrans] = useState(false);
   const [imageState, setImageState] = useState({
     x: 200,
     y: 200,
   });
 
   useEffect(() => {
-    if (isTrans) {
+    if (isSelected) {
       trRef.current.nodes([imgRef.current]);
       trRef.current.getLayer().batchDraw();
-    } else {
-      setTimeout(() => {
-        setIsTrans(true);
-      }, 100);
     }
-  }, [isTrans]);
+  }, [isSelected]);
   const handleStart = () => {
     setImageState({ ...imageState, isDragging: true });
   };
@@ -46,8 +40,10 @@ const ImageComponents = (props) => {
         image={image}
         onDragStart={handleStart}
         onDragEnd={handleEnd}
+        onClick={onSelect}
+        onTap={onSelect}
       />
-      {isTrans && (
+      {isSelected && (
         <Transformer
           ref={trRef}
           boundBoxFunc={(oldBox, newBox) => {
@@ -67,6 +63,7 @@ const DrawImage = (props) => {
   const treeRef = useRef(null);
   const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
+  const [selectedId, setSlectedId] = useState(null);
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
     navigate("/end", { state: uri });
@@ -78,14 +75,35 @@ const DrawImage = (props) => {
     const width = +style.width.slice(0, -2);
     setStageSize({ height, width });
   }, []);
-
+  const checkDeselect = (e) => {
+    // deselect when clicked on empty area
+    const clickedOnEmpty = e.target === e.target.getStage();
+    if (clickedOnEmpty) {
+      setSlectedId(null);
+    }
+  };
   return (
     <>
       <div id="canvas">
-        <Stage ref={treeRef} width={stageSize.width} height={stageSize.height}>
+        <Stage
+          onMouseDown={checkDeselect}
+          onTouchStart={checkDeselect}
+          ref={treeRef}
+          width={stageSize.width}
+          height={stageSize.height}
+        >
           <Layer>
             {images?.map((url, index) => {
-              return <ImageComponents key={index} imgUrl={url} />;
+              return (
+                <ImageComponents
+                  key={index}
+                  imgUrl={url}
+                  isSelected={url === selectedId}
+                  onSelect={() => {
+                    setSlectedId(url);
+                  }}
+                />
+              );
             })}
           </Layer>
         </Stage>
