@@ -4,9 +4,9 @@ import useImage from "use-image";
 import avatar from "../../static/avatar.png";
 import "./index.css";
 
-const downloadURI = (uri, name) => {
+const downloadURI = (uri) => {
   var link = document.createElement("a");
-  link.download = name;
+  link.download = "test";
   link.href = uri;
   document.body.appendChild(link);
   link.click();
@@ -70,18 +70,13 @@ const ImageComponents = (props) => {
   );
 };
 
-const DrawImage = () => {
+const DrawImage = (props) => {
+  const { images } = props;
   const treeRef = useRef(null);
-  const [images, setImages] = useState([]);
   const [stageSize, setStageSize] = useState({});
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
-    downloadURI(uri, "test.png");
-  };
-  const handleAdd = () => {
-    setImages((images) => {
-      return [...images, avatar];
-    });
+    downloadURI(uri);
   };
   useEffect(() => {
     const canvasContainer = document.getElementById("canvas");
@@ -96,12 +91,15 @@ const DrawImage = () => {
       <div id="canvas">
         <Stage ref={treeRef} width={stageSize.width} height={stageSize.height}>
           <Layer>
-            {images?.map((url,index) => {
+            {images?.map((url, index) => {
               return <ImageComponents key={index} imgUrl={url} />;
             })}
           </Layer>
         </Stage>
       </div>
+      <button onClick={handleExport} className="download">
+        导出图片
+      </button>
     </>
   );
 };

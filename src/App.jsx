@@ -1,13 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import DrawImage from "./components/DrawImage";
-import ImageTab from "./components/ImageTab";
+import Drawing from "./pages/Drawing";
+import End from "./pages/End";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <DrawImage />
-      <ImageTab />
+      <Router>
+        <Routes>
+          <Route path="drawing" element={<Drawing />} />
+          <Route path="end" element={<End />} />
+        </Routes>
+      </Router>
     </>
   );
 }

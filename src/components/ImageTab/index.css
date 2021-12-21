@@ -5,9 +5,10 @@
 }
 
 .image-tips {
+    display: flex;
+    overflow: scroll;
     height: 20vh;
     width: 100vw;
-    background-color: gold;
 }
 
 .image-choice {
