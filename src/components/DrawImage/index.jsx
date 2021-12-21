@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer } from "react-konva";
 import useImage from "use-image";
 import avatar from "../../static/avatar.png";
+import comment from "../../static/comment.svg";
+import "./index.css";
 
 const downloadURI = (uri, name) => {
   var link = document.createElement("a");
@@ -12,14 +14,15 @@ const downloadURI = (uri, name) => {
   document.body.removeChild(link);
 };
 
-const AvatarImage = () => {
+const ImageComponents = (props) => {
+  const { imgUrl } = props;
   const imgRef = useRef();
   const trRef = useRef();
-  const [image] = useImage(avatar);
+  const [image] = useImage(imgUrl);
   const [isTrans, setIsTrans] = useState(false);
   const [imageState, setImageState] = useState({
-    x: 50,
-    y: 50,
+    x: 200,
+    y: 200,
   });
 
   useEffect(() => {
@@ -70,20 +73,38 @@ const AvatarImage = () => {
 
 const DrawImage = () => {
   const treeRef = useRef(null);
-
+  const [images, setImages] = useState([]);
+  const [stageSize, setStageSize] = useState({});
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
     downloadURI(uri, "test.png");
   };
+  const handleAdd = () => {
+    setImages((images) => {
+      return [...images, avatar];
+    });
+  };
+  useEffect(() => {
+    const canvasContainer = document.getElementById("canvas");
+    const style = getComputedStyle(canvasContainer);
+    const height = +style.height.slice(0, -2);
+    const width = +style.width.slice(0, -2);
+    setStageSize({ height, width });
+  }, []);
 
   return (
     <>
+      <div id="canvas">
+        <Stage ref={treeRef} width={stageSize.width} height={stageSize.height}>
+          <Layer>
+            {images?.map((url,index) => {
+              return <ImageComponents key={index} imgUrl={url} />;
+            })}
+          </Layer>
+        </Stage>
+      </div>
       <button onClick={handleExport}>点我下载</button>
-      <Stage ref={treeRef} width={window.innerWidth} height={window.innerHeight}>
-        <Layer>
-          <AvatarImage />
-        </Layer>
-      </Stage>
+      <button onClick={handleAdd}>点我添加</button>
     </>
   );
 };
