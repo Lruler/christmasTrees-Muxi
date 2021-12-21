@@ -1,17 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer } from "react-konva";
+import { useNavigate } from "react-router";
 import useImage from "use-image";
 import avatar from "../../static/avatar.png";
 import "./index.css";
-
-const downloadURI = (uri) => {
-  var link = document.createElement("a");
-  link.download = "test";
-  link.href = uri;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
 
 const ImageComponents = (props) => {
   const { imgUrl } = props;
@@ -73,10 +65,11 @@ const ImageComponents = (props) => {
 const DrawImage = (props) => {
   const { images } = props;
   const treeRef = useRef(null);
+  const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
-    downloadURI(uri);
+    navigate("/end", { state: uri });
   };
   useEffect(() => {
     const canvasContainer = document.getElementById("canvas");
