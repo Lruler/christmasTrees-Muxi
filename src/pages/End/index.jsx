@@ -1,22 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router";
+import Message from "../../components/Message";
+import "./index.css";
 
+const width = window.innerWidth;
 const End = () => {
   const location = useLocation();
   const { state } = location;
+  const [isTip, setIsTip] = useState(false);
+
   const handleDownload = () => {
-    let link = document.createElement("a");
-    link.download = "christmasTrees";
-    link.href = state;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (width < 1000) {
+      setIsTip(true);
+      setTimeout(() => {
+        setIsTip(false);
+      }, 1000);
+    } else {
+      let link = document.createElement("a");
+      link.download = "christmasTrees";
+      link.href = state;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
   return (
     <>
-      我是结束
       <img src={state} alt="" />
       <button onClick={handleDownload}>下载图片</button>
+      {isTip && <Message />}
     </>
   );
 };
