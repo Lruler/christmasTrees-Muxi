@@ -1,10 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import HomePage from "./pages/homePage";
 import Drawing from "./pages/Drawing";
 import End from "./pages/End";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <>
       <Router>
@@ -17,6 +22,6 @@ function App() {
       </Router>
     </>
   );
-}
+};
 
 export default App;
