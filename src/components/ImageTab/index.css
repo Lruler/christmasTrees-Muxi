@@ -7,14 +7,62 @@
 .image-tips {
     display: flex;
     overflow: scroll;
-    height: 20vh;
+    align-items: center;
+    height: 22vh;
     width: 100vw;
+    background-image: url(../../static/other/tips.svg);
+}
+
+.image-tip-coniner {
+    margin-left: 10vw;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: rgb(236,246,255);
 }
 
 .image-choice {
+    position: relative;
+    height: 8vh;
+    width: 100vw;
+    background-color: rgb(175,39,45);
+}
+
+.image-up {
     display: flex;
     overflow: scroll;
-    height: 10vh;
-    width: 100vw;
-    background-color: gainsboro;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    bottom: 3.7vh;
+}
+
+.image-container {
+    height: 100%;
+    margin-left: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    height: 100%;
+}
+
+.file {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.file input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+.file input {
+    position: absolute;
+    left: 0;
 }

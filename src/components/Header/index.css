@@ -1,0 +1,10 @@
+.header {
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(208, 78, 79);
+    color: white;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 25px;
+    font-weight: bold;
+}

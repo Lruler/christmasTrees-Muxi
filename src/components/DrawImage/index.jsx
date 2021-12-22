@@ -93,14 +93,14 @@ const DrawImage = (props) => {
           height={stageSize.height}
         >
           <Layer>
-            {images?.map((url, index) => {
+            {images?.map((image, index) => {
               return (
                 <ImageComponents
                   key={index}
-                  imgUrl={url}
-                  isSelected={url === selectedId}
+                  imgUrl={image.url}
+                  isSelected={image.number + image.url === selectedId}
                   onSelect={() => {
-                    setSlectedId(url);
+                    setSlectedId(image.number + image.url);
                   }}
                 />
               );

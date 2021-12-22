@@ -1,55 +1,33 @@
 import React, { useState } from "react";
-import avatar from "../../static/avatar.png";
-import comment from "../../static/comment.svg";
 import "./index.css";
 
-const tabs = [
-  {
-    categories: avatar,
-    details: [avatar, avatar, avatar, avatar, avatar, avatar, avatar],
-  },
-  {
-    categories: comment,
-    details: [comment, comment, comment, comment, comment, comment],
-  },
-  {
-    categories: avatar,
-    details: [avatar, avatar, avatar, avatar, avatar, avatar, avatar],
-  },
-  {
-    categories: comment,
-    details: [comment, comment, comment, comment, comment, comment],
-  },
-  {
-    categories: avatar,
-    details: [avatar, avatar, avatar, avatar, avatar, avatar, avatar],
-  },
-  {
-    categories: comment,
-    details: [comment, comment, comment, comment, comment, comment],
-  },
-  {
-    categories: avatar,
-    details: [avatar, avatar, avatar, avatar, avatar, avatar, avatar],
-  },
-  {
-    categories: comment,
-    details: [comment, comment, comment, comment, comment, comment],
-  },
-  {
-    categories: avatar,
-    details: [avatar, avatar, avatar, avatar, avatar, avatar, avatar],
-  },
-  {
-    categories: comment,
-    details: [comment, comment, comment, comment, comment, comment],
-  },
-];
+const imgs = {
+  choiceTabs: Object.keys(import.meta.globEager(`/src/static/tabs/*.*`)),
+  caideng: Object.keys(import.meta.globEager(`/src/static/caideng/*.*`)),
+  lingdang: Object.keys(import.meta.globEager(`/src/static/lingdang/*.*`)),
+  shengdanwa: Object.keys(import.meta.globEager(`/src/static/shengdanwa/*.*`)),
+  shugan: Object.keys(import.meta.globEager(`/src/static/shugan/*.*`)),
+  shuye: Object.keys(import.meta.globEager(`/src/static/shuye/*.*`)),
+  xingxing: Object.keys(import.meta.globEager(`/src/static/xingxing/*.*`)),
+};
+let tabs = [];
+for (let i = 0; i < imgs.choiceTabs.length; i++) {
+  const tab = imgs.choiceTabs[i];
+  const tabTips = tab.slice(tab.lastIndexOf("/") + 1, tab.indexOf("."));
+  tabs.push({ categories: tab, details: imgs[tabTips] });
+}
 const ImageTab = (props) => {
   const { handleAdd } = props;
   const [tips, setTips] = useState({ isTips: false, tipsDtl: [] });
-  const handleTips = (imgs) => {
-    setTips({ ...tips, tipsDtl: imgs });
+  const [clicked, setClicked] = useState(Array(tabs.length).fill(false));
+  const handleTips = (img, index) => {
+    let newClicked = Array(tabs.length).fill(false);
+    newClicked[index] = true;
+    setClicked(newClicked);
+    setTips({ isTips: true, tipsDtl: img.details });
+    if (img.categories.includes("图片")) {
+      console.log(111);
+    }
   };
   const Add = (img) => {
     handleAdd(img);
@@ -57,20 +35,40 @@ const ImageTab = (props) => {
   return (
     <div className="imagetab">
       <div className="image-tips">
-        {tips.tipsDtl?.map((img, index) => {
-          return <img onClick={() => Add(img)} key={index} src={img}></img>;
-        })}
+        {tips.isTips &&
+          tips.tipsDtl?.map((img) => {
+            return (
+              <div className="image-tip-coniner" key={img}>
+                <img onClick={() => Add(img)} src={img}></img>
+              </div>
+            );
+          })}
       </div>
       <div className="image-choice">
-        {tabs.map((img, index) => {
-          return (
-            <img
-              onClick={() => handleTips(img.details)}
-              key={index}
-              src={img.categories}
-            ></img>
-          );
-        })}
+        <div className="image-up">
+          {tabs.map((img, index) => {
+            return (
+              <div className="image-container" key={img.categories}>
+                {img.categories.includes("图片") ? (
+                  <div className="file">
+                    <img
+                      style={clicked[index] ? { height: "116%" } : null}
+                      onClick={() => handleTips(img, index)}
+                      src={img.categories}
+                    ></img>
+                    <input type="file" accept="image/*" />
+                  </div>
+                ) : (
+                  <img
+                    style={clicked[index] ? { height: "116%" } : null}
+                    onClick={() => handleTips(img, index)}
+                    src={img.categories}
+                  ></img>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
