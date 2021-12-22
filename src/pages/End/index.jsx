@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
 import Message from "../../components/Message";
+import Header from "../../components/Header";
 import "./index.css";
 
 const width = window.innerWidth;
@@ -25,11 +26,12 @@ const End = () => {
     }
   };
   return (
-    <>
+    <div className="end-container">
+      <Header />
       <img src={state} alt="" />
       <button onClick={handleDownload}>下载图片</button>
       {isTip && <Message />}
-    </>
+    </div>
   );
 };
 

@@ -22,10 +22,12 @@ const ImageTab = (props) => {
   const [clicked, setClicked] = useState(Array(tabs.length).fill(false));
   const handleTips = (img, index) => {
     if (img.categories.includes("文字")) {
-      handleText();
+      setTips({ isTips: true, tipsDtl: [] });
+      handleText(false);
     } else {
       let newClicked = Array(tabs.length).fill(false);
       newClicked[index] = true;
+      handleText(true);
       setClicked(newClicked);
       setTips({ isTips: true, tipsDtl: img.details });
     }

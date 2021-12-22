@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer, Text } from "react-konva";
 import { useNavigate } from "react-router";
 import useImage from "use-image";
+import rahmen from "../../static/other/rahmen.svg";
 import "./index.css";
 
 const ImageComponents = (props) => {
@@ -13,7 +14,6 @@ const ImageComponents = (props) => {
     x: 200,
     y: 200,
   });
-
   useEffect(() => {
     if (isSelected) {
       trRef.current.nodes([imgRef.current]);
@@ -32,17 +32,21 @@ const ImageComponents = (props) => {
   };
   return (
     <>
-      <Image
-        x={imageState.x}
-        y={imageState.y}
-        ref={imgRef}
-        draggable
-        image={image}
-        onDragStart={handleStart}
-        onDragEnd={handleEnd}
-        onClick={onSelect}
-        onTap={onSelect}
-      />
+      {imgUrl.includes("rahmen") ? (
+        <Image height={556} width={328} image={image} />
+      ) : (
+        <Image
+          x={imageState.x}
+          y={imageState.y}
+          ref={imgRef}
+          draggable
+          image={image}
+          onDragStart={handleStart}
+          onDragEnd={handleEnd}
+          onClick={onSelect}
+          onTap={onSelect}
+        />
+      )}
       {isSelected && (
         <Transformer
           ref={trRef}
