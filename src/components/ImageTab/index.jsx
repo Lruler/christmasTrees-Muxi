@@ -44,14 +44,16 @@ const ImageTab = (props) => {
   return (
     <div className="imagetab">
       <div className="image-tips">
-        {tips.isTips &&
-          tips.tipsDtl?.map((img) => {
-            return (
-              <div className="image-tip-coniner" key={img}>
-                <img onClick={() => Add(img)} src={img}></img>
-              </div>
-            );
-          })}
+        <div className="image-background">
+          {tips.isTips &&
+            tips.tipsDtl?.map((img) => {
+              return (
+                <div className="image-tip-coniner" key={img}>
+                  <img onClick={() => Add(img)} src={img}></img>
+                </div>
+              );
+            })}
+        </div>
       </div>
       <div className="image-choice">
         <div className="image-up">

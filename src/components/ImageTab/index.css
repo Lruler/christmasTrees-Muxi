@@ -5,12 +5,18 @@
 }
 
 .image-tips {
-    display: flex;
     overflow: scroll;
-    align-items: center;
     height: 22vh;
     width: 100vw;
-    background-image: url(../../static/other/tips.svg);
+}
+
+.image-background{
+    display: flex;
+    align-items: center;
+    background: url(../../static/other/tips.svg) repeat-x;
+    height: 100%;
+    min-width: 100vw;
+    width: fit-content;
 }
 
 .image-tip-coniner {
