@@ -157,9 +157,9 @@ const DrawImage = (props) => {
           </Layer>
         </Stage>
       </div>
-      <button onClick={handleExport} className="download">
+      <div onClick={handleExport} className="download">
         导出图片
-      </button>
+      </div>
     </>
   );
 };

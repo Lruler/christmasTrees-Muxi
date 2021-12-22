@@ -20,12 +20,20 @@ const Text = (props) => {
   }, []);
   const textNode = (
     <div className="text-container">
-      <p>请输入你想插入的文字</p>
-      <input ref={inputRef} value={text} onChange={handleChange} type="text" />
+      <span>插入文字:</span>
+      <div className="textarea-container">
+        <textarea
+          ref={inputRef}
+          value={text}
+          onChange={handleChange}
+          type="text"
+        />
+      </div>
       <div className="feedback">
         <div className="feedback-text" onClick={upText}>
           确认
         </div>
+        <div className="divide"></div>
         <div className="feedback-text" onClick={handleCancle}>
           取消
         </div>
