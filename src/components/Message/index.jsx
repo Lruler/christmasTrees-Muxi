@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 const Message = () => {
-  const reactNode = (
+  const message = (
     <div className="message">
       <p>长按保存图片哦～</p>
     </div>
   );
-  return ReactDOM.createPortal(reactNode, document.body);
+  return ReactDOM.createPortal(message, document.body);
 };
 
 export default Message;

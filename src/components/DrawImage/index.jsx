@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Stage, Layer, Image, Transformer } from "react-konva";
+import { Stage, Layer, Image, Transformer, Text } from "react-konva";
 import { useNavigate } from "react-router";
 import useImage from "use-image";
 import "./index.css";
@@ -58,8 +58,43 @@ const ImageComponents = (props) => {
   );
 };
 
+const TextComponents = (props) => {
+  const { text, isSelected, onSelect } = props;
+  const textRef = useRef();
+  const trRef = useRef();
+  useEffect(() => {
+    if (isSelected) {
+      trRef.current.nodes([textRef.current]);
+      trRef.current.getLayer().batchDraw();
+    }
+  }, [isSelected]);
+  return (
+    <>
+      <Text
+        ref={textRef}
+        text={text}
+        fontSize={25}
+        draggable
+        onClick={onSelect}
+        onTap={onSelect}
+      />
+      {isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
+    </>
+  );
+};
+
 const DrawImage = (props) => {
-  const { images } = props;
+  const { images, texts } = props;
   const treeRef = useRef(null);
   const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
@@ -94,13 +129,27 @@ const DrawImage = (props) => {
         >
           <Layer>
             {images?.map((image, index) => {
+              const id = image.number + image.url;
               return (
                 <ImageComponents
                   key={index}
                   imgUrl={image.url}
-                  isSelected={image.number + image.url === selectedId}
+                  isSelected={id === selectedId}
                   onSelect={() => {
-                    setSlectedId(image.number + image.url);
+                    setSlectedId(id);
+                  }}
+                />
+              );
+            })}
+            {texts?.map((textObj) => {
+              const id = textObj.text + textObj.number;
+              return (
+                <TextComponents
+                  key={id}
+                  text={textObj.text}
+                  isSelected={id === selectedId}
+                  onSelect={() => {
+                    setSlectedId(id);
                   }}
                 />
               );

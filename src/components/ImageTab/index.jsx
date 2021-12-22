@@ -17,20 +17,29 @@ for (let i = 0; i < imgs.choiceTabs.length; i++) {
   tabs.push({ categories: tab, details: imgs[tabTips] });
 }
 const ImageTab = (props) => {
-  const { handleAdd } = props;
+  const { handleAdd, handleBackground, handleText } = props;
   const [tips, setTips] = useState({ isTips: false, tipsDtl: [] });
   const [clicked, setClicked] = useState(Array(tabs.length).fill(false));
   const handleTips = (img, index) => {
-    let newClicked = Array(tabs.length).fill(false);
-    newClicked[index] = true;
-    setClicked(newClicked);
-    setTips({ isTips: true, tipsDtl: img.details });
-    if (img.categories.includes("图片")) {
-      console.log(111);
+    if (img.categories.includes("文字")) {
+      handleText();
+    } else {
+      let newClicked = Array(tabs.length).fill(false);
+      newClicked[index] = true;
+      setClicked(newClicked);
+      setTips({ isTips: true, tipsDtl: img.details });
     }
   };
   const Add = (img) => {
     handleAdd(img);
+  };
+  const upImg = (e) => {
+    const imgFile = e.currentTarget.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imgFile);
+    reader.onload = (e) => {
+      handleBackground(e.target.result);
+    };
   };
   return (
     <div className="imagetab">
@@ -48,7 +57,11 @@ const ImageTab = (props) => {
         <div className="image-up">
           {tabs.map((img, index) => {
             return (
-              <div className="image-container" key={img.categories}>
+              <div
+                className="image-container"
+                key={img.categories}
+                style={clicked[index] ? { height: "125%" } : null}
+              >
                 {img.categories.includes("图片") ? (
                   <div className="file">
                     <img
@@ -56,11 +69,10 @@ const ImageTab = (props) => {
                       onClick={() => handleTips(img, index)}
                       src={img.categories}
                     ></img>
-                    <input type="file" accept="image/*" />
+                    <input type="file" accept="image/*" onChange={upImg} />
                   </div>
                 ) : (
                   <img
-                    style={clicked[index] ? { height: "116%" } : null}
                     onClick={() => handleTips(img, index)}
                     src={img.categories}
                   ></img>
