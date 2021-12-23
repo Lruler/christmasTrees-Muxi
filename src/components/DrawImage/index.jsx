@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Image, Transformer, Text } from "react-konva";
 import { useNavigate } from "react-router";
 import useImage from "use-image";
-import rahmen from "../../static/other/rahmen.svg";
 import "./index.css";
 
 const ImageComponents = (props) => {

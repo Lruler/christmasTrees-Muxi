@@ -9,6 +9,7 @@ const imgs = {
   shugan: Object.keys(import.meta.globEager(`/src/static/shugan/*.*`)),
   shuye: Object.keys(import.meta.globEager(`/src/static/shuye/*.*`)),
   xingxing: Object.keys(import.meta.globEager(`/src/static/xingxing/*.*`)),
+  guaizhang: Object.keys(import.meta.globEager(`/src/static/guaizhang/*.*`)),
 };
 let tabs = [];
 for (let i = 0; i < imgs.choiceTabs.length; i++) {
