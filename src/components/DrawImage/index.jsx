@@ -75,6 +75,7 @@ const TextComponents = (props) => {
         ref={textRef}
         text={text}
         fontSize={25}
+        fontFamily="test"
         draggable
         onClick={onSelect}
         onTap={onSelect}
