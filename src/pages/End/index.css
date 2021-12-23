@@ -2,3 +2,23 @@
     width: 328px;
     height: 556px;
 }
+.end-container {
+    background-color: rgb(236,246,255);
+}
+
+.downloadtree {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2vh;
+    background-color: rgb(123,207,225);
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    height: 3em;
+    width: 6em;
+    text-align: center;
+    line-height: 3em;
+    border-radius: 1em;
+    cursor: pointer;
+}
