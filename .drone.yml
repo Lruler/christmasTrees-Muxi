@@ -28,7 +28,7 @@ steps:
         from_secret: SK
     commands:
     - yarn global add qiniu-upload-tool --registry=https://registry.npm.taobao.org
-    - qiniu-upload push -z huad -p ./build -b ccnustatic -f christmas-trees -r yes
+    - qiniu-upload push -z huad -p ./dist -b ccnustatic -f christmas-trees -r yes
     - rm -rf ./src
     - rm -rf ./node_modules
   - name: build-and-push-image # 构建 user 服务镜像
