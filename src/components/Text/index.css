@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     bottom: 10vh;
     left: 50%;
@@ -17,6 +17,7 @@
     flex: 1;
     position: absolute;
     top: -5vh;
+    left: 0;
     font-size: 25px;
     font-weight: bold;
     color: rgb(113, 113, 113);
@@ -34,7 +35,6 @@
     flex: 2;
     border-style: none;
     font-size: 18px;
-    font-family: 'test';
     resize: none;
     padding: 0;
     line-height: 30px;
@@ -68,4 +68,41 @@
     height: 100%;
     width: 1px;
     background-color: rgb(113, 113, 113);
+    margin: 0 8px;
+}
+
+.family-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.family1 {
+    font-family: 'xingyenian';
+    color: rgb(113, 113, 113);
+    padding: 0 5px;
+}
+
+.family2 {
+    font-family: 'Muyao';
+    color: rgb(113, 113, 113);
+    padding: 0 5px;
+}
+
+.slider-picker {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.textFamilyxingyenian {
+    font-family: 'xingyenian';
+}
+
+.textFamilyMuyao {
+    font-family: 'Muyao';
 }

@@ -60,7 +60,7 @@ const ImageComponents = (props) => {
 };
 
 const TextComponents = (props) => {
-  const { text, isSelected, onSelect } = props;
+  const { text, isSelected, onSelect, fontStyle } = props;
   const textRef = useRef();
   const trRef = useRef();
   useEffect(() => {
@@ -75,7 +75,8 @@ const TextComponents = (props) => {
         ref={textRef}
         text={text}
         fontSize={25}
-        fontFamily="test"
+        fontFamily={fontStyle.family}
+        fill={fontStyle.color}
         draggable
         onClick={onSelect}
         onTap={onSelect}
@@ -96,7 +97,7 @@ const TextComponents = (props) => {
 };
 
 const DrawImage = (props) => {
-  const { images, texts } = props;
+  const { images, texts, fontStyle } = props;
   const treeRef = useRef(null);
   const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
@@ -150,6 +151,7 @@ const DrawImage = (props) => {
                   key={id}
                   text={textObj.text}
                   isSelected={id === selectedId}
+                  fontStyle={fontStyle}
                   onSelect={() => {
                     setSlectedId(id);
                   }}

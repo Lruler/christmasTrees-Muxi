@@ -11,6 +11,8 @@ const Drawing = () => {
   const [images, setImages] = useState([]);
   const [texts, setTexts] = useState([]);
   const [isCancel, setIsCancel] = useState(true);
+  const [step, setStep] = useState(0);
+  const [fontStyle, setFontStyle] = useState(null);
   const handleAdd = (img) => {
     number++;
     setImages((images) => {
@@ -33,18 +35,35 @@ const Drawing = () => {
     });
     setIsCancel(true);
   };
+  const handleFontStyle = (style) => {
+    setStep((step) => step + 1);
+    if (!style.includes("#")) {
+      setFontStyle({ family: style });
+    } else {
+      setFontStyle((family) => {
+        return { ...family, color: style };
+      });
+    }
+  };
   return (
     <div className="drawingpage">
       <img className="xuehua" src={xuehua}></img>
       <Header />
-      <DrawImage images={images} texts={texts} />
+      <DrawImage images={images} texts={texts} fontStyle={fontStyle} />
       <ImageTab
         handleAdd={handleAdd}
         handleBackground={handleBackground}
         handleText={handleText}
       />
       {isCancel ? null : (
-        <Text handleText={handleText} isCancel={isCancel} DrawText={DrawText} />
+        <Text
+          step={step}
+          fontStyle={fontStyle}
+          handleText={handleText}
+          handleFontStyle={handleFontStyle}
+          isCancel={isCancel}
+          DrawText={DrawText}
+        />
       )}
     </div>
   );
