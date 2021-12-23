@@ -7,3 +7,19 @@
     top:12vh;
     left: 3vw;
 }
+
+.remove {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 6vw;
+    width: 1.8em;
+    height: 6em;
+    border-radius: 1em;
+    font-size: 18px;
+    background-color: white;
+    text-align: center;
+    padding: 3px 0;
+    color: rgb(209,81,82);
+    z-index: 10;
+}

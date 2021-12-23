@@ -97,11 +97,11 @@ const TextComponents = (props) => {
 };
 
 const DrawImage = (props) => {
-  const { images, texts, fontStyle } = props;
+  const { images, texts, fontStyle, selectedId, setSlectedId } = props;
   const treeRef = useRef(null);
   const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
-  const [selectedId, setSlectedId] = useState(null);
+
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
     navigate("/end", { state: uri });
@@ -162,7 +162,7 @@ const DrawImage = (props) => {
         </Stage>
       </div>
       <div onClick={handleExport} className="download">
-        导出图片
+        获取你的圣诞树
       </div>
     </>
   );

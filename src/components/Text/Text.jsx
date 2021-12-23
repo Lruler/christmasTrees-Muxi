@@ -10,9 +10,6 @@ const Text = (props) => {
   const onChangeColor = (colorObj) => {
     setColor(colorObj.hex);
   };
-  // const onChangeCompeleteColor = (colorObj) => {
-  //   console.log(color);
-  // };
   const inputRef = useRef();
   const handleChange = (e) => {
     setText(e.target.value);

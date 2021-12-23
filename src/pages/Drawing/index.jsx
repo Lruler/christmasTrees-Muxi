@@ -13,6 +13,20 @@ const Drawing = () => {
   const [isCancel, setIsCancel] = useState(true);
   const [step, setStep] = useState(0);
   const [fontStyle, setFontStyle] = useState(null);
+  const [selectedId, setSlectedId] = useState(null);
+  const handleRemove = () => {
+    console.log(111)
+    setImages((images) => {
+      const imgs = images.map((img) => {
+        if (img.number === +selectedId.slice(0, selectedId.indexOf("/")))
+          return null;
+        else return img;
+      });
+      imgs.splice(imgs.indexOf(null), 1)
+      console.log(imgs)
+      return imgs;
+    });
+  };
   const handleAdd = (img) => {
     number++;
     setImages((images) => {
@@ -48,8 +62,17 @@ const Drawing = () => {
   return (
     <div className="drawingpage">
       <img className="xuehua" src={xuehua}></img>
+      <div className="remove" onClick={handleRemove}>
+        删除元素
+      </div>
       <Header />
-      <DrawImage images={images} texts={texts} fontStyle={fontStyle} />
+      <DrawImage
+        setSlectedId={setSlectedId}
+        selectedId={selectedId}
+        images={images}
+        texts={texts}
+        fontStyle={fontStyle}
+      />
       <ImageTab
         handleAdd={handleAdd}
         handleBackground={handleBackground}
