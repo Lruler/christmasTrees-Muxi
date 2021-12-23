@@ -4,8 +4,8 @@ import { Stage, Layer, Image } from "react-konva";
 import useImage from "use-image";
 import Message from "../../components/Message";
 import Header from "../../components/Header";
-import xuehua from "../../static/other/xuehua.svg";
-import rahmen from "../../static/other/rahmen.svg";
+import xuehua from "../../../static/other/xuehua.svg";
+import rahmen from "../../../static/other/rahmen.svg";
 import "./index.css";
 
 const DownLoadImage = (props) => {

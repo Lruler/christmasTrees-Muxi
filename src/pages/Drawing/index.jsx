@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import DrawImage from "../../components/DrawImage";
 import ImageTab from "../../components/ImageTab";
-import xuehua from "../../static/other/xuehua.svg";
+import xuehua from "../../../static/other/xuehua.svg";
 import Text from "../../components/Text/Text";
 import "./index.css";
 

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./index.css";
 
 const imgs = {
-  choiceTabs: Object.keys(import.meta.globEager(`/src/static/tabs/*.*`)),
-  caideng: Object.keys(import.meta.globEager(`/src/static/caideng/*.*`)),
-  lingdang: Object.keys(import.meta.globEager(`/src/static/lingdang/*.*`)),
-  shengdanwa: Object.keys(import.meta.globEager(`/src/static/shengdanwa/*.*`)),
-  shugan: Object.keys(import.meta.globEager(`/src/static/shugan/*.*`)),
-  shuye: Object.keys(import.meta.globEager(`/src/static/shuye/*.*`)),
-  xingxing: Object.keys(import.meta.globEager(`/src/static/xingxing/*.*`)),
-  guaizhang: Object.keys(import.meta.globEager(`/src/static/guaizhang/*.*`)),
+  choiceTabs: Object.keys(import.meta.globEager(`/static/tabs/*.*`)),
+  caideng: Object.keys(import.meta.globEager(`/static/caideng/*.*`)),
+  lingdang: Object.keys(import.meta.globEager(`/static/lingdang/*.*`)),
+  shengdanwa: Object.keys(import.meta.globEager(`/static/shengdanwa/*.*`)),
+  shugan: Object.keys(import.meta.globEager(`/static/shugan/*.*`)),
+  shuye: Object.keys(import.meta.globEager(`/static/shuye/*.*`)),
+  xingxing: Object.keys(import.meta.globEager(`/static/xingxing/*.*`)),
+  guaizhang: Object.keys(import.meta.globEager(`/static/guaizhang/*.*`)),
 };
 let tabs = [];
 for (let i = 0; i < imgs.choiceTabs.length; i++) {
