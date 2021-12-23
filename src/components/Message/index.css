@@ -9,6 +9,7 @@
     height: 50px;
     background-color: black;
     opacity: .8;
+    z-index: 999;
 }
 
 .message p {

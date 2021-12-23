@@ -31,21 +31,19 @@ const ImageComponents = (props) => {
   };
   return (
     <>
-      {imgUrl.includes("rahmen") ? (
-        <Image height={556} width={328} image={image} />
-      ) : (
-        <Image
-          x={imageState.x}
-          y={imageState.y}
-          ref={imgRef}
-          draggable
-          image={image}
-          onDragStart={handleStart}
-          onDragEnd={handleEnd}
-          onClick={onSelect}
-          onTap={onSelect}
-        />
-      )}
+      <Image
+        x={imageState.x}
+        y={imageState.y}
+        ref={imgRef}
+        width={100}
+        height={100}
+        draggable
+        image={image}
+        onDragStart={handleStart}
+        onDragEnd={handleEnd}
+        onClick={onSelect}
+        onTap={onSelect}
+      />
       {isSelected && (
         <Transformer
           ref={trRef}

@@ -1,7 +1,3 @@
-.a {
-    width: 328px;
-    height: 556px;
-}
 .end-container {
     background-color: rgb(236,246,255);
 }
@@ -21,4 +17,9 @@
     line-height: 3em;
     border-radius: 1em;
     cursor: pointer;
+}
+
+.downloadImg {
+    position: relative;
+    z-index: 5;
 }
