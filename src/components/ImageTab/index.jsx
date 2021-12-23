@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import "./index.css";
 
+const choiceTabs = import.meta.globEager(`/static/tabs/*.*`);
+const caideng = import.meta.globEager(`/static/caideng/*.*`);
+const lingdang = import.meta.globEager(`/static/lingdang/*.*`);
+const shengdanwa = import.meta.globEager(`/static/shengdanwa/*.*`);
+const shugan = import.meta.globEager(`/static/shugan/*.*`);
+const shuye = import.meta.globEager(`/static/shuye/*.*`);
+const xingxing = import.meta.globEager(`/static/xingxing/*.*`);
+const guaizhang = import.meta.globEager(`/static/guaizhang/*.*`);
 const imgs = {
-  choiceTabs: Object.keys(import.meta.globEager(`/static/tabs/*.*`)),
-  caideng: Object.keys(import.meta.globEager(`/static/caideng/*.*`)),
-  lingdang: Object.keys(import.meta.globEager(`/static/lingdang/*.*`)),
-  shengdanwa: Object.keys(import.meta.globEager(`/static/shengdanwa/*.*`)),
-  shugan: Object.keys(import.meta.globEager(`/static/shugan/*.*`)),
-  shuye: Object.keys(import.meta.globEager(`/static/shuye/*.*`)),
-  xingxing: Object.keys(import.meta.globEager(`/static/xingxing/*.*`)),
-  guaizhang: Object.keys(import.meta.globEager(`/static/guaizhang/*.*`)),
+  choiceTabs: Object.keys(choiceTabs),
+  caideng: Object.keys(caideng),
+  lingdang: Object.keys(lingdang),
+  shengdanwa: Object.keys(shengdanwa),
+  shugan: Object.keys(shugan),
+  shuye: Object.keys(shuye),
+  xingxing: Object.keys(xingxing),
+  guaizhang: Object.keys(guaizhang),
 };
 let tabs = [];
 for (let i = 0; i < imgs.choiceTabs.length; i++) {
