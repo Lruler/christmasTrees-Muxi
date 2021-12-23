@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import xuehua from "../../../static/other/xuehua.svg";
 import "./index.css";
 
 const choiceTabs = import.meta.globEager(`/static/tabs/*.*`);
@@ -9,23 +10,27 @@ const shugan = import.meta.globEager(`/static/shugan/*.*`);
 const shuye = import.meta.globEager(`/static/shuye/*.*`);
 const xingxing = import.meta.globEager(`/static/xingxing/*.*`);
 const guaizhang = import.meta.globEager(`/static/guaizhang/*.*`);
-const imgs = {
-  choiceTabs: Object.keys(choiceTabs),
-  caideng: Object.keys(caideng),
-  lingdang: Object.keys(lingdang),
-  shengdanwa: Object.keys(shengdanwa),
-  shugan: Object.keys(shugan),
-  shuye: Object.keys(shuye),
-  xingxing: Object.keys(xingxing),
-  guaizhang: Object.keys(guaizhang),
-};
-let tabs = [];
-for (let i = 0; i < imgs.choiceTabs.length; i++) {
-  const tab = imgs.choiceTabs[i];
-  const tabTips = tab.slice(tab.lastIndexOf("/") + 1, tab.indexOf("."));
-  tabs.push({ categories: tab, details: imgs[tabTips] });
-}
+
+console.log(choiceTabs);
+console.log(xuehua);
+
 const ImageTab = (props) => {
+  const imgs = {
+    choiceTabs: Object.keys(choiceTabs),
+    caideng: Object.keys(caideng),
+    lingdang: Object.keys(lingdang),
+    shengdanwa: Object.keys(shengdanwa),
+    shugan: Object.keys(shugan),
+    shuye: Object.keys(shuye),
+    xingxing: Object.keys(xingxing),
+    guaizhang: Object.keys(guaizhang),
+  };
+  let tabs = [];
+  for (let i = 0; i < imgs.choiceTabs.length; i++) {
+    const tab = imgs.choiceTabs[i];
+    const tabTips = tab.slice(tab.lastIndexOf("/") + 1, tab.indexOf("."));
+    tabs.push({ categories: tab, details: imgs[tabTips] });
+  }
   const { handleAdd, handleBackground, handleText } = props;
   const [tips, setTips] = useState({ isTips: false, tipsDtl: [] });
   const [clicked, setClicked] = useState(Array(tabs.length).fill(false));
