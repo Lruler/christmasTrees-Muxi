@@ -11,23 +11,22 @@ const shuye = import.meta.globEager(`/static/shuye/*.*`);
 const xingxing = import.meta.globEager(`/static/xingxing/*.*`);
 const guaizhang = import.meta.globEager(`/static/guaizhang/*.*`);
 
-console.log(choiceTabs);
-console.log(xuehua);
+console.log(Object.values(choiceTabs)[0].default);
 
 const ImageTab = (props) => {
   const imgs = {
-    choiceTabs: Object.keys(choiceTabs),
-    caideng: Object.keys(caideng),
-    lingdang: Object.keys(lingdang),
-    shengdanwa: Object.keys(shengdanwa),
-    shugan: Object.keys(shugan),
-    shuye: Object.keys(shuye),
-    xingxing: Object.keys(xingxing),
-    guaizhang: Object.keys(guaizhang),
+    choiceTabs: Object.values(choiceTabs),
+    caideng: Object.values(caideng),
+    lingdang: Object.values(lingdang),
+    shengdanwa: Object.values(shengdanwa),
+    shugan: Object.values(shugan),
+    shuye: Object.values(shuye),
+    xingxing: Object.values(xingxing),
+    guaizhang: Object.values(guaizhang),
   };
   let tabs = [];
   for (let i = 0; i < imgs.choiceTabs.length; i++) {
-    const tab = imgs.choiceTabs[i];
+    const tab = imgs.choiceTabs[i].default;
     const tabTips = tab.slice(tab.lastIndexOf("/") + 1, tab.indexOf("."));
     tabs.push({ categories: tab, details: imgs[tabTips] });
   }
@@ -43,6 +42,7 @@ const ImageTab = (props) => {
       newClicked[index] = true;
       handleText(true);
       setClicked(newClicked);
+      console.log(img)
       setTips({ isTips: true, tipsDtl: img.details });
     }
   };
@@ -64,8 +64,8 @@ const ImageTab = (props) => {
           {tips.isTips &&
             tips.tipsDtl?.map((img) => {
               return (
-                <div className="image-tip-coniner" key={img}>
-                  <img onClick={() => Add(img)} src={img}></img>
+                <div className="image-tip-coniner" key={img.default}>
+                  <img onClick={() => Add(img.default)} src={img.default}></img>
                 </div>
               );
             })}
