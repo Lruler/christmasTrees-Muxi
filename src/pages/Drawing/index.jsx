@@ -15,17 +15,16 @@ const Drawing = () => {
   const [fontStyle, setFontStyle] = useState(null);
   const [selectedId, setSlectedId] = useState(null);
   const handleRemove = () => {
-    console.log(111)
     setImages((images) => {
       const imgs = images.map((img) => {
         if (img.number === +selectedId.slice(0, selectedId.indexOf("/")))
           return null;
         else return img;
       });
-      imgs.splice(imgs.indexOf(null), 1)
-      console.log(imgs)
+      imgs.splice(imgs.indexOf(null), 1);
       return imgs;
     });
+    setSlectedId(null);
   };
   const handleAdd = (img) => {
     number++;
@@ -62,7 +61,13 @@ const Drawing = () => {
   return (
     <div className="drawingpage">
       <img className="xuehua" src={xuehua}></img>
-      <div className="remove" onClick={handleRemove}>
+      <div
+        style={{
+          display: selectedId ? "block" : "none",
+        }}
+        className="remove"
+        onClick={handleRemove}
+      >
         删除元素
       </div>
       <Header />
