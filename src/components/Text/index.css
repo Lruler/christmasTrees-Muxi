@@ -83,13 +83,13 @@
 }
 
 .family1 {
-    font-family: 'xingyenian';
+  font-family: 'ZCOOL KuaiLe', cursive;
     color: rgb(113, 113, 113);
     padding: 0 5px;
 }
 
 .family2 {
-    font-family: 'Muyao';
+    font-family: 'Zhi Mang Xing', cursive;
     color: rgb(113, 113, 113);
     padding: 0 5px;
 }
@@ -99,10 +99,10 @@
     margin-bottom: 10px;
 }
 
-.textFamilyxingyenian {
-    font-family: 'xingyenian';
+.textFamilyZC {
+  font-family: 'ZCOOL KuaiLe', cursive;
 }
 
-.textFamilyMuyao {
-    font-family: 'Muyao';
+.textFamilyZh {
+    font-family: 'Zhi Mang Xing', cursive;
 }

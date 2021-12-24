@@ -34,11 +34,11 @@ const Text = (props) => {
     <div className="text-container">
       <span>文字字体:</span>
       <div className="family-container">
-        <div className="family1" onClick={() => choiceFamily("xingyenian")}>
+        <div className="family1" onClick={() => choiceFamily("ZCOOL KuaiLe")}>
           木犀团队
         </div>
         <div className="divide"></div>
-        <div className="family2" onClick={() => choiceFamily("Muyao")}>
+        <div className="family2" onClick={() => choiceFamily("Zhi Mang Xing")}>
           木犀团队
         </div>
       </div>
@@ -51,7 +51,9 @@ const Text = (props) => {
         <textarea
           ref={inputRef}
           value={text}
-          className={fontStyle ? "textFamily" + fontStyle.family : null}
+          className={
+            fontStyle ? "textFamily" + fontStyle.family.slice(0, 2) : null
+          }
           onChange={handleChange}
           style={fontStyle ? { color: fontStyle.color } : null}
           type="text"

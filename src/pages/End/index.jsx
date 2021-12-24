@@ -13,7 +13,14 @@ const DownLoadImage = (props) => {
   const [image] = url ? useImage(url) : useImage(rahmen);
   const rahmenX = (x - 328) / 2;
   const rahmenY = (y - 556) / 2;
-  return <Image draggable x={rahmenX} y={rahmenY} image={image} />;
+  return (
+    <Image
+      draggable={url ? true : false}
+      x={rahmenX}
+      y={rahmenY}
+      image={image}
+    />
+  );
 };
 
 const End = () => {

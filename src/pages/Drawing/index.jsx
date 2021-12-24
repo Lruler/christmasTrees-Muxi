@@ -33,13 +33,14 @@ const Drawing = () => {
     });
   };
   const handleBackground = (url) => {
-    console.log(url)
+    console.log(url);
     number++;
     setImages((images) => {
       return [...images, { url, number }];
     });
   };
   const handleText = (isCancel) => {
+    setStep(0);
     setIsCancel(isCancel);
   };
   const DrawText = (text) => {
@@ -48,6 +49,7 @@ const Drawing = () => {
       return [...texts, { text, number }];
     });
     setIsCancel(true);
+    setStep(0);
   };
   const handleFontStyle = (style) => {
     setStep((step) => step + 1);
