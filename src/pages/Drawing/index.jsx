@@ -33,9 +33,10 @@ const Drawing = () => {
     });
   };
   const handleBackground = (url) => {
+    console.log(url)
     number++;
     setImages((images) => {
-      return [{ url, number }, ...images];
+      return [...images, { url, number }];
     });
   };
   const handleText = (isCancel) => {

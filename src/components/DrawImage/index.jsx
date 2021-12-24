@@ -133,6 +133,23 @@ const DrawImage = (props) => {
           <Layer>
             {images?.map((image, index) => {
               const id = image.number + image.url;
+              if (image.url.length < 100) return null;
+              return (
+                <ImageComponents
+                  key={index}
+                  imgUrl={image.url}
+                  isSelected={id === selectedId}
+                  onSelect={() => {
+                    setSlectedId(id);
+                  }}
+                />
+              );
+            })}
+          </Layer>
+          <Layer>
+            {images?.map((image, index) => {
+              const id = image.number + image.url;
+              if (image.url.length > 100) return null;
               return (
                 <ImageComponents
                   key={index}
