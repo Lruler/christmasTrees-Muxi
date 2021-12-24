@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family:'xingyenian';
     src: url(/static/font/新叶念体.otf);
 }
@@ -6,7 +6,7 @@
 @font-face {
   font-family: 'Muyao';
   src: url(/static/font/Muyao-Softbrush.ttf);
-}
+} */
 
 .App {
   text-align: center;
