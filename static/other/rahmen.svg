@@ -1,11 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="328" height="556" viewBox="0 0 328 556">
   <defs>
     <style>
-      .cls-1, .cls-8 {
-        fill: none;
-      }
-
       .cls-1 {
+        fill: #e8f6ff;
         stroke: #ff7373;
         stroke-width: 8px;
         opacity: 0.8;
@@ -40,6 +37,10 @@
 
       .cls-7 {
         stroke: none;
+      }
+
+      .cls-8 {
+        fill: none;
       }
     </style>
     <linearGradient id="linear-gradient" x1="0.826" y1="0.94" x2="0.113" y2="0.032" gradientUnits="objectBoundingBox">

@@ -6,21 +6,18 @@ const choiceTabs = import.meta.globEager(`/static/tabs/*.*`);
 const caideng = import.meta.globEager(`/static/caideng/*.*`);
 const lingdang = import.meta.globEager(`/static/lingdang/*.*`);
 const shengdanwa = import.meta.globEager(`/static/shengdanwa/*.*`);
-const shugan = import.meta.globEager(`/static/shugan/*.*`);
-const shuye = import.meta.globEager(`/static/shuye/*.*`);
+const bshugan = import.meta.globEager(`/static/bshugan/*.*`);
+const ashuye = import.meta.globEager(`/static/ashuye/*.*`);
 const xingxing = import.meta.globEager(`/static/xingxing/*.*`);
 const guaizhang = import.meta.globEager(`/static/guaizhang/*.*`);
-
-console.log(Object.values(choiceTabs)[0].default);
-
 const ImageTab = (props) => {
   const imgs = {
+    bshugan: Object.values(bshugan),
+    ashuye: Object.values(ashuye),
     choiceTabs: Object.values(choiceTabs),
     caideng: Object.values(caideng),
     lingdang: Object.values(lingdang),
     shengdanwa: Object.values(shengdanwa),
-    shugan: Object.values(shugan),
-    shuye: Object.values(shuye),
     xingxing: Object.values(xingxing),
     guaizhang: Object.values(guaizhang),
   };
@@ -42,7 +39,6 @@ const ImageTab = (props) => {
       newClicked[index] = true;
       handleText(true);
       setClicked(newClicked);
-      console.log(img)
       setTips({ isTips: true, tipsDtl: img.details });
     }
   };

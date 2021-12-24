@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
+import homepage from "../../../static/other/homepage.jpg";
 import "./index.css";
 
 const HomePage = () => {
@@ -8,9 +9,16 @@ const HomePage = () => {
     navigate("/drawing");
   };
   return (
-    <>
-      <button onClick={goDraw}>开始</button>
-    </>
+    <div className="homepage">
+      <img
+        src={homepage}
+        className={window.innerWidth > 1000 ? "homeimg" : "mobiveimg"}
+        alt=""
+      />
+      <div className="start" onClick={goDraw}>
+        开始
+      </div>
+    </div>
   );
 };
 

@@ -33,7 +33,6 @@ const Drawing = () => {
     });
   };
   const handleBackground = (url) => {
-    console.log(url);
     number++;
     setImages((images) => {
       return [...images, { url, number }];
