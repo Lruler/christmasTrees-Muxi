@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import xuehua from "../../../static/other/xuehua.svg";
+import xuehua from "../../static/other/xuehua.svg";
 import "./index.css";
 
-const choiceTabs = import.meta.globEager(`/static/tabs/*.*`);
-const caideng = import.meta.globEager(`/static/caideng/*.*`);
-const lingdang = import.meta.globEager(`/static/lingdang/*.*`);
-const shengdanwa = import.meta.globEager(`/static/shengdanwa/*.*`);
-const bshugan = import.meta.globEager(`/static/bshugan/*.*`);
-const ashuye = import.meta.globEager(`/static/ashuye/*.*`);
-const xingxing = import.meta.globEager(`/static/xingxing/*.*`);
-const guaizhang = import.meta.globEager(`/static/guaizhang/*.*`);
+const choiceTabs = import.meta.globEager(`../../static/tabs/*.*`);
+const caideng = import.meta.globEager(`../../static/caideng/*.*`);
+const lingdang = import.meta.globEager(`../../static/lingdang/*.*`);
+const shengdanwa = import.meta.globEager(`../../static/shengdanwa/*.*`);
+const bshugan = import.meta.globEager(`../../static/bshugan/*.*`);
+const ashuye = import.meta.globEager(`../../static/ashuye/*.*`);
+const xingxing = import.meta.globEager(`../../static/xingxing/*.*`);
+const guaizhang = import.meta.globEager(`../../static/guaizhang/*.*`);
 const ImageTab = (props) => {
   const imgs = {
     bshugan: Object.values(bshugan),

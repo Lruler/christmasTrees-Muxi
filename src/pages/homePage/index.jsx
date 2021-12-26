@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import homepage from "../../../static/other/homepage.svg";
+import homepage from "../../static/other/homepage.svg";
 import "./index.css";
 
 const HomePage = () => {

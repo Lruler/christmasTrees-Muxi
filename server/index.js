@@ -15,8 +15,8 @@ app.use(userAgent);
 app.use(bodyParser());
 
 
-router.get(/^\/static(?:\/|$)/, async ctx => {
-    const filePath = ctx.path.replace(/static\//, '');
+router.get(/^\/assets(?:\/|$)/, async ctx => {
+    const filePath = ctx.path.replace(/assets\//, '');
     await send(ctx, filePath, {
         root: path.join(__dirname, '../dist/assets'),
         maxage: '31536000', // long-term caching
