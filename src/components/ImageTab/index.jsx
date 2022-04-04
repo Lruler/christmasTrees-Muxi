@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import xuehua from "../../static/other/xuehua.svg";
 import "./index.css";
 
 const choiceTabs = import.meta.globEager(`../../static/tabs/*.*`);

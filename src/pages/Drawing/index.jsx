@@ -24,6 +24,15 @@ const Drawing = () => {
       imgs.splice(imgs.indexOf(null), 1);
       return imgs;
     });
+    setTexts((texts) => {
+      const choosedText = texts.map((text) => {
+        if (text.number === +selectedId.slice(0, selectedId.indexOf("/")))
+          return null;
+        else return text;
+      });
+      texts.splice(choosedText.indexOf(null), 1);
+      return texts
+    })
     setSlectedId(null);
   };
   const handleAdd = (img) => {

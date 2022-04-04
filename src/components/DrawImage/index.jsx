@@ -98,10 +98,10 @@ const TextComponents = (props) => {
 
 const DrawImage = (props) => {
   const { images, texts, fontStyle, selectedId, setSlectedId } = props;
+  console.log(fontStyle)
   const treeRef = useRef(null);
   const navigate = useNavigate();
   const [stageSize, setStageSize] = useState({});
-
   const handleExport = () => {
     const uri = treeRef.current.toDataURL();
     navigate("/end", { state: uri });
