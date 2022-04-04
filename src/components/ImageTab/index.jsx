@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
 
-const choiceTabs = import.meta.globEager(`../../static/tabs/*.*`);
 const caideng = import.meta.globEager(`../../static/caideng/*.*`);
 const lingdang = import.meta.globEager(`../../static/lingdang/*.*`);
 const shengdanwa = import.meta.globEager(`../../static/shengdanwa/*.*`);
@@ -9,28 +8,29 @@ const bshugan = import.meta.globEager(`../../static/bshugan/*.*`);
 const ashuye = import.meta.globEager(`../../static/ashuye/*.*`);
 const xingxing = import.meta.globEager(`../../static/xingxing/*.*`);
 const guaizhang = import.meta.globEager(`../../static/guaizhang/*.*`);
+const choiceTabs = import.meta.globEager(`../../static/tabs/*.*`);
+
 const ImageTab = (props) => {
-  const imgs = {
-    bshugan: Object.values(bshugan),
-    ashuye: Object.values(ashuye),
-    choiceTabs: Object.values(choiceTabs),
-    caideng: Object.values(caideng),
-    lingdang: Object.values(lingdang),
-    shengdanwa: Object.values(shengdanwa),
-    xingxing: Object.values(xingxing),
-    guaizhang: Object.values(guaizhang),
-  };
+  const imgs = [
+    Object.values(choiceTabs),
+    Object.values(ashuye),
+    Object.values(bshugan),
+    Object.values(caideng),
+    Object.values(guaizhang),
+    Object.values(lingdang),
+    Object.values(shengdanwa),
+    Object.values(xingxing),
+  ];
   let tabs = [];
-  for (let i = 0; i < imgs.choiceTabs.length; i++) {
-    const tab = imgs.choiceTabs[i].default;
-    const tabTips = tab.slice(tab.lastIndexOf("/") + 1, tab.indexOf("."));
-    tabs.push({ categories: tab, details: imgs[tabTips] });
+  for (let i = 0; i < imgs[0].length; i++) {
+    const tab = imgs[0][i].default;
+    tabs.push({ categories: tab, details: imgs[i + 1] });
   }
   const { handleAdd, handleBackground, handleText } = props;
   const [tips, setTips] = useState({ isTips: false, tipsDtl: [] });
   const [clicked, setClicked] = useState(Array(tabs.length).fill(false));
   const handleTips = (img, index) => {
-    if (img.categories.includes("文字")) {
+    if (index === 8) {
       setTips({ isTips: true, tipsDtl: [] });
       handleText(false);
     } else {
@@ -75,7 +75,7 @@ const ImageTab = (props) => {
                 key={img.categories}
                 style={clicked[index] ? { height: "125%" } : null}
               >
-                {img.categories.includes("图片") ? (
+                {index === 7 ? (
                   <div className="file">
                     <img
                       style={clicked[index] ? { height: "116%" } : null}
